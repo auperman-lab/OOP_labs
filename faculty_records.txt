@@ -1,0 +1,15 @@
+Name: Calculatoare, Informatica si Microelectronica
+Abbreviation: fcim
+StudyField: SOFTWARE_ENGINEERING
+
+Name: Electronica si Telecomunicatii
+Abbreviation: fet
+StudyField: SOFTWARE_ENGINEERING
+
+Name: qwerty
+Abbreviation: qwe
+StudyField: FOOD_TECHNOLOGY
+
+Name: asdf
+Abbreviation: asd
+StudyField: SOFTWARE_ENGINEERING

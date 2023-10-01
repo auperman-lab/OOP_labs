@@ -1,4 +1,4 @@
-
+package lab1;
 
 public class Car {
     int speed = 0;
