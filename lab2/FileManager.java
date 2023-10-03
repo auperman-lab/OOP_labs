@@ -11,6 +11,8 @@ public class FileManager {
 
     public void saveFaculties(Vector<Faculty> faculties){
 
+        clearFile(facultyFile);
+
         for(Faculty faculty:faculties){
             try {
                 FileWriter fileWriter = new FileWriter(facultyFile, true);
@@ -46,7 +48,6 @@ public class FileManager {
 
     public  Vector<Faculty> readFaculty( Vector<Faculty> faculties) {
 
-        clearFile(facultyFile);
         try (FileReader fileReader = new FileReader(facultyFile);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
@@ -80,6 +81,7 @@ public class FileManager {
 
     public void saveStudents(Vector<Student> students){
 
+        clearFile(studentFile);
         for(Student student:students){
             try {
                 FileWriter fileWriter = new FileWriter(studentFile, true);
@@ -120,7 +122,6 @@ public class FileManager {
 
     public  Vector<Student> readStudent( Vector<Student> students) {
 
-        clearFile(studentFile);
         try (FileReader fileReader = new FileReader(studentFile);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
