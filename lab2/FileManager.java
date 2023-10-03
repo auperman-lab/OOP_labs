@@ -9,6 +9,8 @@ public class FileManager {
     private String facultyFile = "faculty_records.txt";
     private String studentFile = "student_records.txt";
 
+
+
     public void saveFaculties(Vector<Faculty> faculties){
 
         clearFile(facultyFile);
@@ -29,10 +31,14 @@ public class FileManager {
 
                 bufferedWriter.close();
 
-                System.out.println("Faculty information has been written to " + facultyFile);
+//                System.out.println("Faculty information has been written to " + facultyFile);
 
             } catch (IOException e) {
+                // Handle the IO exception
                 e.printStackTrace();
+
+                // Log the error and provide context
+                System.err.println("Error writing faculty information to the file: " + e.getMessage());
             }
         }
         try{
@@ -42,6 +48,8 @@ public class FileManager {
             bufferedWriter.close();
         }catch (IOException e){
             e.printStackTrace();
+            System.err.println("Error writing faculty information to the file: " + e.getMessage());
+
         }
 
     }
@@ -74,6 +82,8 @@ public class FileManager {
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Error reading faculty information from the file: " + e.getMessage());
+
         }
 
         return faculties;
@@ -89,9 +99,12 @@ public class FileManager {
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
+                bufferedWriter.newLine();
                 bufferedWriter.write("First Name: " + student.firstName);
                 bufferedWriter.newLine();
                 bufferedWriter.write("Last Name: " + student.lastName);
+                bufferedWriter.newLine();
+                bufferedWriter.write("Email: " + student.email);
                 bufferedWriter.newLine();
                 bufferedWriter.write("Status: " + student.status.toString());
                 bufferedWriter.newLine();
@@ -99,14 +112,15 @@ public class FileManager {
                 bufferedWriter.newLine();
                 bufferedWriter.write("Date of Birth: " + dateFormat.format(student.dateOfBirth));
                 bufferedWriter.newLine();
-                bufferedWriter.newLine();
 
                 bufferedWriter.close();
 
-                System.out.println("Student information has been written to " + studentFile);
+//                System.out.println("Student information has been written to " + studentFile);
 
             } catch (IOException e) {
                 e.printStackTrace();
+                System.err.println("Error writing student information to the file: " + e.getMessage());
+
             }
         }
         try{
@@ -162,6 +176,8 @@ public class FileManager {
 
         } catch (IOException e) {
             e.printStackTrace();
+            System.err.println("Error reading student information from the file: " + e.getMessage());
+
         }
 
         return students;
@@ -176,6 +192,7 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
 }
 
 

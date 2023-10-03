@@ -36,13 +36,12 @@ public class Student {
     }
 
 
-
     public void displayStudent(){
         System.out.println("First Name : "+this.firstName);
         System.out.println("Last Name : "+this.lastName);
         System.out.println("Email : "+this.email);
         System.out.println("Enrollement date : "+this.enrollementDate);
-        System.out.println("Date of Birth : "+this.dateOfBirth);
+        System.out.println("Date of Birth : "+this.dateOfBirth+"\n");
     }
 
 

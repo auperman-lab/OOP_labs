@@ -1,0 +1,9 @@
+
+Name: qwerty
+Abbreviation: qwe
+StudyField: YES
+
+Name: asdfg
+Abbreviation: asd
+StudyField: YES
+

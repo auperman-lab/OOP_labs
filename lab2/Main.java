@@ -12,6 +12,7 @@ public class Main {
         FileManager fileManager = new FileManager();
 
         fileManager.readFaculty(faculties);
+        fileManager.readStudent(students);
 
         Scanner in = new Scanner(System.in);
         String navigate = "";

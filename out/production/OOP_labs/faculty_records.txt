@@ -1,13 +1,9 @@
 
-Name: qwe
-Abbreviation: qw
-StudyField: YES
-
 Name: qwerty
 Abbreviation: qwe
-StudyField: FOOD_TECHNOLOGY
+StudyField: YES
 
-Name: asdf
+Name: asdfg
 Abbreviation: asd
-StudyField: SOFTWARE_ENGINEERING
+StudyField: YES
 
