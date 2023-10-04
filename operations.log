@@ -1,0 +1,10 @@
+Oct 04, 2023 5:02:26 PM lab2.FileManager saveLogToFile
+INFO: Invalid format for creating a faculty: nf/1
+Oct 04, 2023 5:03:13 PM lab2.FileManager saveLogToFile
+INFO: Invalid format for searching students: ss/qwe/qwe
+Oct 04, 2023 5:42:29 PM lab2.Operations.GeneralOperations createFaculty
+WARNING: Invalid format for creating a faculty: nf/cf
+Oct 04, 2023 5:43:48 PM lab2.Operations.GeneralOperations createFaculty
+WARNING: Invalid format for creating a faculty: nf/hyu/hiu
+Oct 04, 2023 5:43:56 PM lab2.Operations.GeneralOperations createFaculty
+WARNING: Invalid format for creating a faculty: nf/cy/guy

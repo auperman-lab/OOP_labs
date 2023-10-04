@@ -7,3 +7,15 @@ Name: asdfg
 Abbreviation: asd
 StudyField: YES
 
+Name: asd
+Abbreviation: as
+StudyField: YES
+
+Name: tty
+Abbreviation: tt
+StudyField: YES
+
+Name: oop
+Abbreviation: oo
+StudyField: YES
+

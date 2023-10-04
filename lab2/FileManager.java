@@ -1,23 +1,33 @@
 package lab2;
 
+import lab2.Models.Faculty;
+import lab2.Models.Student;
+import lab2.Models.StudyField;
+
 import java.io.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Vector;
+import java.util.logging.*;
 
 public class FileManager {
-    private String facultyFile = "faculty_records.txt";
-    private String studentFile = "student_records.txt";
+    private String facultydb = "faculty_records.txt";
+    private String studentdb = "student_records.txt";
+    private static Logger LOGGER = Logger.getLogger(FileManager.class.getName());
+    private static String logFile = "operations.log";
+
+    static {
+        saveLogToFile();
+    }
 
 
 
     public void saveFaculties(Vector<Faculty> faculties){
 
-        clearFile(facultyFile);
+        clearFile(facultydb);
 
         for(Faculty faculty:faculties){
             try {
-                FileWriter fileWriter = new FileWriter(facultyFile, true);
+                FileWriter fileWriter = new FileWriter(facultydb, true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
 
@@ -42,7 +52,7 @@ public class FileManager {
             }
         }
         try{
-            FileWriter fileWriter = new FileWriter(facultyFile, true);
+            FileWriter fileWriter = new FileWriter(facultydb, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.newLine();
             bufferedWriter.close();
@@ -56,7 +66,7 @@ public class FileManager {
 
     public  Vector<Faculty> readFaculty( Vector<Faculty> faculties) {
 
-        try (FileReader fileReader = new FileReader(facultyFile);
+        try (FileReader fileReader = new FileReader(facultydb);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             String line;
@@ -91,10 +101,10 @@ public class FileManager {
 
     public void saveStudents(Vector<Student> students){
 
-        clearFile(studentFile);
+        clearFile(studentdb);
         for(Student student:students){
             try {
-                FileWriter fileWriter = new FileWriter(studentFile, true);
+                FileWriter fileWriter = new FileWriter(studentdb, true);
                 BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
                 SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
@@ -124,7 +134,7 @@ public class FileManager {
             }
         }
         try{
-            FileWriter fileWriter = new FileWriter(studentFile, true);
+            FileWriter fileWriter = new FileWriter(studentdb, true);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             bufferedWriter.newLine();
             bufferedWriter.close();
@@ -136,7 +146,7 @@ public class FileManager {
 
     public  Vector<Student> readStudent( Vector<Student> students) {
 
-        try (FileReader fileReader = new FileReader(studentFile);
+        try (FileReader fileReader = new FileReader(studentdb);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
 
             String line;
@@ -183,6 +193,23 @@ public class FileManager {
         return students;
     }
 
+    public static void saveLogToFile() {
+        try {
+            FileHandler fileHandler = new FileHandler(logFile, true);
+            LOGGER.setLevel(Level.ALL);
+            fileHandler.setFormatter(new SimpleFormatter());
+
+            LOGGER.addHandler(fileHandler);
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static Logger getLogger(){
+        return LOGGER;
+    }
 
 
     private void clearFile(String fileName) {

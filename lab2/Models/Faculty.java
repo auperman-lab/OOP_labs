@@ -1,18 +1,11 @@
-package lab2;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+package lab2.Models;
 
 import java.util.Vector;
 
 public class Faculty {
-    String name;
-    String abbreviation;
-    StudyField studyField;
-    Vector<Student> students = new Vector<>(2);
+    public String name;
+    public String abbreviation;
+    public StudyField studyField;
 
     public Faculty(String name, String abbreviation, StudyField studyField){
         this.name = name;
@@ -28,10 +21,7 @@ public class Faculty {
     }
 
 
-    public void enrollStudent(Student student){
-        students.add(student);
 
-    }
 
 
 }

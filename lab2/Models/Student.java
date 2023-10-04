@@ -1,4 +1,4 @@
-package lab2;
+package lab2.Models;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -10,12 +10,12 @@ import java.text.SimpleDateFormat;
 
 public class Student {
 
-    String firstName;
-    String lastName;
-    String email;
-    Date enrollementDate;
-    Date dateOfBirth;
-    Boolean status;
+    public String firstName;
+    public String lastName;
+    public String email;
+    public Date enrollementDate;
+    public Date dateOfBirth;
+    public Boolean status;
 
     public Student(String firstName, String lastName, String dateOfBirth, String email, boolean status, String enrollementDate){
         this.firstName = firstName;

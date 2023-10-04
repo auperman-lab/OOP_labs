@@ -1,5 +1,10 @@
 package lab2;
 
+import lab2.Models.Faculty;
+import lab2.Models.Student;
+import lab2.Operations.FacultyOperations;
+import lab2.Operations.GeneralOperations;
+
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -51,6 +56,7 @@ public class Main {
         System.out.println("Exiting the program.");
         fileManager.saveFaculties(faculties);
         fileManager.saveStudents(students);
+//        fileManager.saveLogToFile();
 
         in.close();
     }

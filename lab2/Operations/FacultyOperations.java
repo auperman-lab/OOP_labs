@@ -1,4 +1,7 @@
-package lab2;
+package lab2.Operations;
+
+import lab2.Models.Faculty;
+import lab2.Models.Student;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -17,7 +20,6 @@ public class FacultyOperations {
                 String currentDateFormatted = dateFormat.format(new Date());
                 Student student = new Student(parts[2], parts[3], parts[4], parts[2].toLowerCase()+parts[3].toLowerCase()+"@"+studentFaculty.abbreviation+".utm.md", true, currentDateFormatted);
                 students.add(student);
-                studentFaculty.enrollStudent(student);
                 System.out.println("\nStudent created successfully\n");
             }
         } else System.out.println("Invalid format for creating a student");
