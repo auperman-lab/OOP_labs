@@ -16,8 +16,8 @@ public class Main {
         Vector<Student> students = new Vector<>(2);
         FileManager fileManager = new FileManager();
 
-        fileManager.readFaculty(faculties);
-        fileManager.readStudent(students);
+        fileManager.readFaculty(faculties, fileManager.facultydb);
+        fileManager.readStudent(students, fileManager.studentdb);
 
         Scanner in = new Scanner(System.in);
         String navigate = "";
@@ -39,7 +39,7 @@ public class Main {
                     if (g) return;
                     break;
                 case "f":
-                    boolean f = faculty(faculties, students, in);
+                    boolean f = faculty(faculties, students, fileManager, in);
                     if (f) return;
                     break;
                 case "s":
@@ -54,9 +54,8 @@ public class Main {
             }
         }
         System.out.println("Exiting the program.");
-        fileManager.saveFaculties(faculties);
-        fileManager.saveStudents(students);
-//        fileManager.saveLogToFile();
+        fileManager.saveFaculties(faculties, fileManager.facultydb);
+        fileManager.saveStudents(students, fileManager.studentdb);
 
         in.close();
     }
@@ -90,7 +89,7 @@ public class Main {
             else if (navigate.startsWith("df/")) {
                 general.displaySpecificFaculty(faculties, navigate);
             }
-            else if (navigate.equals("b")) {
+             else if (navigate.equals("b")) {
                 return false;
             }
             else if (navigate.equals("q")){
@@ -101,7 +100,7 @@ public class Main {
         return true;
     }
 
-    public static boolean faculty(Vector<Faculty> faculties, Vector<Student> students, Scanner in) {
+    public static boolean faculty(Vector<Faculty> faculties, Vector<Student> students,FileManager fileManager, Scanner in) {
         String navigate ="";
         FacultyOperations facultyOperations = new FacultyOperations();
 
@@ -124,6 +123,9 @@ public class Main {
             }
             else if (navigate.startsWith("bf/")) {
               facultyOperations.belongsToFaculty(students, navigate);
+            }
+            else if (navigate.startsWith("bs/")){
+                facultyOperations.batchStudents(students, fileManager, navigate);
             }
             else if (navigate.equals("b")) {
                 return false;

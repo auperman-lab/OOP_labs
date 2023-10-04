@@ -2,6 +2,7 @@ package lab2.Operations;
 
 import lab2.FileManager;
 import lab2.Models.Faculty;
+import lab2.Models.Student;
 import lab2.Models.StudyField;
 
 import java.util.Vector;
@@ -80,13 +81,15 @@ public class GeneralOperations {
 
 
 
+
+
     public void printGeneralOperations() {
         System.out.print("\nGeneral operations\n" +
                 "What do you want to do?\n\n" +
                 "nf/<faculty name>/<faculty abbreviation>/<field> - create faculty\n" +
                 "ss/<student email> - search student and show faculty\n" +
                 "df - display faculties\n" +
-                "df/<field> - display all faculties of a field\n\n" +
+                "df/<field> - display all faculties of a field\n\n"+
                 "b - Back\n" +
                 "q - Quit\n\n" +
                 "Your input> ");

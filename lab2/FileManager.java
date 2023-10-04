@@ -10,8 +10,8 @@ import java.util.Vector;
 import java.util.logging.*;
 
 public class FileManager {
-    private String facultydb = "faculty_records.txt";
-    private String studentdb = "student_records.txt";
+    public String facultydb = "faculty_records.txt";
+    public String studentdb = "student_records.txt";
     private static Logger LOGGER = Logger.getLogger(FileManager.class.getName());
     private static String logFile = "operations.log";
 
@@ -20,8 +20,7 @@ public class FileManager {
     }
 
 
-
-    public void saveFaculties(Vector<Faculty> faculties){
+    public void saveFaculties(Vector<Faculty> faculties, String facultydb){
 
         clearFile(facultydb);
 
@@ -48,7 +47,7 @@ public class FileManager {
                 e.printStackTrace();
 
                 // Log the error and provide context
-                System.err.println("Error writing faculty information to the file: " + e.getMessage());
+                LOGGER.severe("Error writing faculty information to the file: " + e.getMessage());
             }
         }
         try{
@@ -58,13 +57,13 @@ public class FileManager {
             bufferedWriter.close();
         }catch (IOException e){
             e.printStackTrace();
-            System.err.println("Error writing faculty information to the file: " + e.getMessage());
+            LOGGER.severe("Error writing faculty information to the file: " + e.getMessage());
 
         }
 
     }
 
-    public  Vector<Faculty> readFaculty( Vector<Faculty> faculties) {
+    public  Vector<Faculty> readFaculty( Vector<Faculty> faculties, String facultydb) {
 
         try (FileReader fileReader = new FileReader(facultydb);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -92,14 +91,14 @@ public class FileManager {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error reading faculty information from the file: " + e.getMessage());
+            LOGGER.severe("Error reading faculty information from the file: " + e.getMessage());
 
         }
 
         return faculties;
     }
 
-    public void saveStudents(Vector<Student> students){
+    public void saveStudents(Vector<Student> students, String studentdb){
 
         clearFile(studentdb);
         for(Student student:students){
@@ -129,7 +128,7 @@ public class FileManager {
 
             } catch (IOException e) {
                 e.printStackTrace();
-                System.err.println("Error writing student information to the file: " + e.getMessage());
+                LOGGER.severe("Error writing student information to the file: " + e.getMessage());
 
             }
         }
@@ -140,11 +139,12 @@ public class FileManager {
             bufferedWriter.close();
         }catch (IOException e){
             e.printStackTrace();
+            LOGGER.severe("Error writing student information to the file: " + e.getMessage());
         }
 
     }
 
-    public  Vector<Student> readStudent( Vector<Student> students) {
+    public  Vector<Student> readStudent( Vector<Student> students, String studentdb) {
 
         try (FileReader fileReader = new FileReader(studentdb);
              BufferedReader bufferedReader = new BufferedReader(fileReader)) {
@@ -186,7 +186,7 @@ public class FileManager {
 
         } catch (IOException e) {
             e.printStackTrace();
-            System.err.println("Error reading student information from the file: " + e.getMessage());
+            LOGGER.severe("Error reading student information from the file: " + e.getMessage());
 
         }
 
@@ -204,6 +204,8 @@ public class FileManager {
 
         } catch (IOException e) {
             e.printStackTrace();
+            LOGGER.severe("Error saving student information to the file: " + e.getMessage());
+
         }
     }
 

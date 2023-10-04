@@ -1,5 +1,6 @@
 package lab2.Operations;
 
+import lab2.FileManager;
 import lab2.Models.Faculty;
 import lab2.Models.Student;
 
@@ -94,6 +95,17 @@ public class FacultyOperations {
         return "Unknown";
     }
 
+    public void batchStudents(Vector<Student> students, FileManager fileManager, String s){
+
+        String[] parts = s.split("/");
+        if (parts.length == 2) {
+            fileManager.readStudent(students, parts[1]);
+
+        } else System.out.println("Invalid format for bathcing students info");
+
+
+    }
+
     public void printFacultyOperations(){
         System.out.print("\nFaculty opertions\n" +
                 "What do u want to do?\n\n" +
@@ -101,7 +113,8 @@ public class FacultyOperations {
                 "gs/<student email> - graduate student\n" +
                 "ds/<faculty abbreviation> - display enrolled students\n" +
                 "dg/<faculty abbreviation> - display graduated students\n" +
-                "bf/<faculty abbreviation>/<email> - check if student belongs to faculty\n\n" +
+                "bf/<faculty abbreviation>/<email> - check if student belongs to faculty\n" +
+                "bs/filelocation - add students from a file\n\n"+
                 "b - Back\n" +
                 "q - Quit\n\n" +
                 "Your input> ");
