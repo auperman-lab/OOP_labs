@@ -6,10 +6,8 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
-import static lab3.FileManager.saveMetadataToFile;
 
 
 public class Folder extends SimpleFileVisitor<Path> {
@@ -32,7 +30,6 @@ public class Folder extends SimpleFileVisitor<Path> {
 
             metadataList.add(metadata);
 
-            saveMetadataToFile(metadataList, "metadata.txt");
 
             return FileVisitResult.CONTINUE;
         }

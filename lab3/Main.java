@@ -1,11 +1,7 @@
 package lab3;
 
-import java.io.IOException;
 import java.nio.file.*;
-
-import java.util.ArrayList;
-import java.util.EnumSet;
-import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
@@ -13,13 +9,23 @@ public class Main {
         String folderPath = "/Users/nmacrii/Desktop/test";
         Path directory = Path.of(folderPath);
 
-        try {
-            List<String> metadataList = new ArrayList<>();
-            Files.walkFileTree(directory, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE, new Folder.FolderVisitor(metadataList));
+        Scanner in = new Scanner(System.in);
+        String navigate = "";
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        while (!navigate.equals("q")){
+            navigate = in.nextLine();
+
+            if(navigate.equals("commit")){
+                Controller.commit(directory);
+            }else if(navigate.startsWith("info")){
+                String[] nav = navigate.split(" ");
+                Controller.getInfo(nav[1]);
+            }else if(navigate.equals("status")){
+                Controller.getStatus();
+            }
+
         }
+
     }
 
 

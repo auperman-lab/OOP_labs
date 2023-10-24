@@ -4,11 +4,11 @@ import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
 
 public class Info {
-    String name;
-    String extension;
-    long size;
-    String lastUpdate;
-    String created;
+    private String name;
+    private String extension;
+    private long size;
+    private String lastUpdate;
+    private String created;
 
     public Info(String name_, long size_, FileTime lastUpdate_,FileTime created_){
         this.name = name_;
