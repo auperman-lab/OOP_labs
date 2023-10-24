@@ -17,7 +17,6 @@ public class Main {
             List<String> metadataList = new ArrayList<>();
             Files.walkFileTree(directory, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE, new Folder.FolderVisitor(metadataList));
 
-            // Save the metadata to a text file
         } catch (IOException e) {
             e.printStackTrace();
         }
