@@ -33,16 +33,6 @@ public class Folder extends SimpleFileVisitor<Path> {
 
             return FileVisitResult.CONTINUE;
         }
-
-        public FileVisitResult visitResult(String file, BasicFileAttributes attrs){
-            long fileSize = attrs.size();
-            FileTime lastModifiedTime = attrs.lastModifiedTime();
-            FileTime creationTime = attrs.creationTime();
-
-            return FileVisitResult.CONTINUE;
-
-        }
-
     }
 }
 

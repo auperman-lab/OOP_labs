@@ -1,4 +1,4 @@
-package lab3;
+package lab3.Info;
 
 import java.nio.file.attribute.FileTime;
 import java.text.SimpleDateFormat;
@@ -10,14 +10,21 @@ public class Info {
     private String lastUpdate;
     private String created;
 
-    public Info(String name_, long size_, FileTime lastUpdate_,FileTime created_){
-        this.name = name_;
-        this.extension = getPrettyExtension(name_);
-        this.size = size_;
-        this.lastUpdate = formatDateAndTime(lastUpdate_);
-        this.created = formatDateAndTime(created_);
+    public Info(String name, long size, FileTime lastUpdate,FileTime created){
+        this.name = name;
+        this.extension = getPrettyExtension(name);
+        this.size = size;
+        this.lastUpdate = formatDateAndTime(lastUpdate);
+        this.created = formatDateAndTime(created);
     }
 
+    public Info(String name, long size, String lastUpdate,String created){
+        this.name = name;
+        this.extension = getPrettyExtension(name);
+        this.size = size;
+        this.lastUpdate = lastUpdate;
+        this.created = created;
+    }
     private String getPrettyExtension(String fileName) {
         int lastDotIndex = fileName.lastIndexOf(".");
         if (lastDotIndex != -1) {
@@ -29,6 +36,22 @@ public class Info {
     private String formatDateAndTime(FileTime fileTime) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(new java.util.Date(fileTime.toMillis()));
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    public String getLastUpdate() {
+        return lastUpdate;
+    }
+
+    public String getCreated() {
+        return created;
     }
     public void display(){
         System.out.println("File name: "+ name);
