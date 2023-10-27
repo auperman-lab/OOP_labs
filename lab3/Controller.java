@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
+
+import static lab3.FileManager.readMetadataFromFile;
 import static lab3.FileManager.saveMetadataToFile;
 
 public class Controller {
@@ -34,6 +36,8 @@ public class Controller {
 
     public static void getInfo(String file) {
         String[] ext = file.split("\\.");
+
+
         switch(ext[1]){
             case "png" :
             case "jpg" :
@@ -67,13 +71,23 @@ public class Controller {
                     fileInfo.display();
                 }
                 break;
-
-
         }
 
     }
 
-    public static void getStatus() {
-        // Implement the status logic here
+    public static void getStatus(Path directory) {
+
+        try {
+            List<String> metadataList = new ArrayList<>();
+            Files.walkFileTree(directory, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE, new Folder.FolderVisitor(metadataList));
+            StatusDetection statusDetection = new StatusDetection(metadataList, readMetadataFromFile("metadata.txt"));
+
+
+            statusDetection.detectChanges();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
     }
 }

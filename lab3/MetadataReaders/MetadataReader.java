@@ -11,6 +11,7 @@ import java.nio.file.attribute.FileTime;
 public class MetadataReader {
     public Info readMetadata(String filePath) {
         Path path = FileSystems.getDefault().getPath(filePath);
+
         try {
             BasicFileAttributes attrs = java.nio.file.Files.readAttributes(path, BasicFileAttributes.class);
 

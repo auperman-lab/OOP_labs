@@ -23,10 +23,13 @@ public class Folder extends SimpleFileVisitor<Path> {
             String fileName = file.getFileName().toString();
             long fileSize = attrs.size();
             FileTime lastModifiedTime = attrs.lastModifiedTime();
+            FileTime creationTime = attrs.creationTime();
 
             String metadata = "File: " + fileName + "\n" +
                     "Size: " + fileSize + " bytes\n" +
-                    "Last Modified Time: " + lastModifiedTime + "\n\n";
+                    "Last Modified Time: " + lastModifiedTime + "\n"+
+                    "Creation Time: " + creationTime + "\n\n";
+
 
             metadataList.add(metadata);
 
