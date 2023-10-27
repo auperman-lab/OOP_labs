@@ -7,10 +7,11 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
 import java.util.List;
-
+import java.util.logging.Logger;
 
 
 public class Folder extends SimpleFileVisitor<Path> {
+    public static Logger logger = lab3.FileManager.getLogger();
     static class FolderVisitor extends SimpleFileVisitor<Path> {
         private List<String> metadataList;
 
@@ -33,7 +34,7 @@ public class Folder extends SimpleFileVisitor<Path> {
 
             metadataList.add(metadata);
 
-
+            logger.info("Folder info retrieved succesfully");
             return FileVisitResult.CONTINUE;
         }
     }

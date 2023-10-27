@@ -7,8 +7,10 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileTime;
+import java.util.logging.Logger;
 
 public class MetadataReader {
+    public static Logger logger = lab3.FileManager.getLogger();
     public Info readMetadata(String filePath) {
         Path path = FileSystems.getDefault().getPath(filePath);
 
@@ -20,9 +22,10 @@ public class MetadataReader {
             FileTime lastUpdate = attrs.lastModifiedTime();
             FileTime created = attrs.creationTime();
 
+            logger.info("file metadata retrieved successfully");
             return new Info(name, size, lastUpdate, created);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("failed to read metadata "+ e);
             return null;
         }
     }

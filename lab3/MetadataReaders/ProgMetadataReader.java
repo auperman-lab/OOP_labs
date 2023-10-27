@@ -6,13 +6,16 @@ import lab3.Info.ProgInfo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Logger;
 
 public class ProgMetadataReader extends MetadataReader{
+    public static Logger logger = lab3.FileManager.getLogger();
     public ProgInfo readMetadata(String filePath) {
         Info info = super.readMetadata(filePath);
 
         String content = readTextFileContent(filePath);
         if (content != null) {
+            logger.info("program metadata retrieved successfully ");
             return new ProgInfo(
                     info.getName(), info.getSize(), info.getLastUpdate(), info.getCreated(),
                     content
@@ -31,7 +34,7 @@ public class ProgMetadataReader extends MetadataReader{
             }
             return contentBuilder.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("failed to retrieve prog metadata "+ e);
             return null;
         }
     }

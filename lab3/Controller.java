@@ -16,21 +16,23 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+import java.util.logging.Logger;
 
 
 import static lab3.FileManager.readMetadataFromFile;
 import static lab3.FileManager.saveMetadataToFile;
 
 public class Controller {
+    public static Logger logger = lab3.FileManager.getLogger();
 
     public static void commit(Path directory){
         try {
             List<String> metadataList = new ArrayList<>();
             Files.walkFileTree(directory, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE, new Folder.FolderVisitor(metadataList));
 
-            saveMetadataToFile(metadataList, "metadata.txt");
+            saveMetadataToFile(metadataList);
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("failed to get folder information "+ e);
         }
     }
 
@@ -80,12 +82,12 @@ public class Controller {
         try {
             List<String> metadataList = new ArrayList<>();
             Files.walkFileTree(directory, EnumSet.noneOf(FileVisitOption.class), Integer.MAX_VALUE, new Folder.FolderVisitor(metadataList));
-            StatusDetection statusDetection = new StatusDetection(metadataList, readMetadataFromFile("metadata.txt"));
+            StatusDetection statusDetection = new StatusDetection(metadataList, readMetadataFromFile());
 
 
             statusDetection.detectChanges();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("failed to get folder information "+ e);
         }
 
 

@@ -16,7 +16,6 @@ public class ProgInfo extends Info{
     public void display() {
         super.display();
 
-        // Display additional information
         System.out.println("Line Count: "+ countLines() );
         System.out.println("Class Count: " + countClasses());
         System.out.println("Method Count: " + countMethods());

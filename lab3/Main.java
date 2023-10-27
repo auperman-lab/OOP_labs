@@ -5,12 +5,15 @@ import java.util.Scanner;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 
 public class Main {
+    public static Logger logger = lab3.FileManager.getLogger();
     public static void main(String[] args) {
         String folderPath = "/Users/nmacrii/Desktop/test";
         Path directory = Path.of(folderPath);
+
 
         Scanner in = new Scanner(System.in);
         String navigate = "";
@@ -39,9 +42,12 @@ public class Main {
                 Controller.getInfo(folderPath+"/"+nav[1]);
             }else if(navigate.equals("status")){
                 Controller.getStatus(directory);
+            }else{
+                logger.warning("Incorrect command");
             }
 
         }
+        FileManager.saveLogToFile();
         scheduler.shutdown();
 
     }

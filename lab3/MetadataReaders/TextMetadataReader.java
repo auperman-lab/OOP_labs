@@ -5,12 +5,16 @@ import lab3.Info.TxtInfo;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Logger;
+
 public class TextMetadataReader extends MetadataReader{
+    public static Logger logger = lab3.FileManager.getLogger();
     public TxtInfo readMetadata(String filePath) {
         Info info = super.readMetadata(filePath);
 
         String content = readTextFileContent(filePath);
         if (content != null) {
+            logger.info("Txt metadata retrieved successfully");
             return new TxtInfo(
                         info.getName(), info.getSize(), info.getLastUpdate(), info.getCreated(),
                         content
@@ -29,7 +33,7 @@ public class TextMetadataReader extends MetadataReader{
             }
             return contentBuilder.toString();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("txt metadata failed to retrieve "+ e);
             return null;
         }
     }
