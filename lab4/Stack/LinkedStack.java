@@ -63,4 +63,8 @@ public class LinkedStack implements IStack {
     public boolean isEmpty() {
         return top == null;
     }
+    public boolean isFull() {
+        return false;
+    }
+
 }

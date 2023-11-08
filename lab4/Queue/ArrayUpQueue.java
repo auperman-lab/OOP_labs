@@ -67,10 +67,12 @@ public class ArrayUpQueue implements IQueue {
 
     @Override
     public boolean isEmpty() {
+
         return size == 0;
     }
 
     private boolean isFull() {
+
         return size == queue.length;
     }
 }

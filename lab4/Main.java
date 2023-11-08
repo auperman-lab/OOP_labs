@@ -1,5 +1,6 @@
 package lab4;
 
+import lab4.Queue.ArrayUpQueue;
 import lab4.Stack.ArrayUpStack;
 import lab4.Stack.LinkedStack;
 
@@ -41,6 +42,27 @@ public class Main {
         stack.clear();
         stack.elements();
         System.out.println("Is the stack empty after clearing? " + stack.isEmpty()); // Output: Is the stack empty after clearing? true
+
+//-------------------------------------------------------------------------------------------------------------
+
+        System.out.println("\nQueue");
+        ArrayUpQueue auq = new ArrayUpQueue();
+
+        auq.enqueue(4);
+        auq.enqueue(2);
+        auq.enqueue(3);
+
+        System.out.println("Dequeued: " + auq.dequeue());
+        System.out.println("Dequeued: " + auq.dequeue());
+
+        auq.enqueue(5);
+        auq.enqueue(6);
+
+        auq.elements();
+
+        auq.clear();
+
+        System.out.println("Is the queue empty after clearing? " + auq.isEmpty()); // Should print "Is the qu
     }
 
 }

@@ -14,7 +14,7 @@ public class ArrayUpStack implements IStack{
     }
     @Override
     public void push(int element){
-        if(top == stack.length){
+        if(isFull()){
             stack = Arrays.copyOf(stack, top*2);
         }
         stack[top] = element;
@@ -52,6 +52,11 @@ public class ArrayUpStack implements IStack{
     @Override
     public boolean isEmpty() {
         return top == 0;
+    }
+
+    @Override
+    public boolean isFull(){
+        return top == stack.length;
     }
 
 }

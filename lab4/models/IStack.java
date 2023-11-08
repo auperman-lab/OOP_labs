@@ -7,6 +7,7 @@ public interface IStack {
     void clear();
     void elements();
     boolean isEmpty();
+    boolean isFull();
 
 
 }
