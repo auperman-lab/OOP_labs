@@ -44,6 +44,7 @@ public class LinkedStack implements IStack {
             top = temp;
             temp = top.next;
         }
+        top = null;
 
     }
 

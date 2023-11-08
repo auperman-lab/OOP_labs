@@ -23,16 +23,15 @@ public class ArrayUpStack implements IStack{
 
     @Override
     public int pop() {
-
+        top--;
         int element = stack[top];
         stack[top] = 0;
-        top--;
         return element;
     }
 
     @Override
     public int peek() {
-        return stack[top];
+        return stack[top-1];
     }
 
     @Override
@@ -44,8 +43,9 @@ public class ArrayUpStack implements IStack{
     @Override
     public void elements() {
         for(int i:stack){
-            System.out.println(i + " ");
+            System.out.print(i + " ");
         }
+        System.out.println();
 
     }
 
